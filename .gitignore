@@ -1,0 +1,10 @@
+# project directories
+datasets
+logs
+nohup
+
+debug.log
+
+test_images
+
+data
