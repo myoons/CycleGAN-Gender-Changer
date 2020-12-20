@@ -1,1 +1,1 @@
-python train.py --dataroot datasets/genderchange --cuda
+python train.py --dataroot datasets/background_remove --cuda

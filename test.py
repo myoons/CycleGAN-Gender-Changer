@@ -23,8 +23,8 @@ parser.add_argument('--output_nc', type=int, default=3, help='number of channels
 parser.add_argument('--size', type=int, default=256, help='size of the data (squared assumed)')
 parser.add_argument('--cuda', action='store_true', help='use GPU computation')
 parser.add_argument('--n_cpu', type=int, default=8, help='number of cpu threads to use during batch generation')
-parser.add_argument('--generator_A2B', type=str, default='/data/cycleGAN/logs/genderChanger@08.12.2020-14:10:15/189/netG_A2B.pth', help='A2B generator checkpoint file')
-parser.add_argument('--generator_B2A', type=str, default='output/netG_B2A.pth', help='B2A generator checkpoint file')
+parser.add_argument('--generator_A2B', type=str, default='/data/cycleGAN/logs/genderChanger@09.12.2020-03:34:27/weights/307/netG_A2B.pth', help='A2B generator checkpoint file')
+parser.add_argument('--generator_B2A', type=str, default='/data/cycleGAN/logs/genderChanger@09.12.2020-03:34:27/weights/307/netG_A2B.pth', help='B2A generator checkpoint file')
 opt = parser.parse_args()
 print(opt)
 

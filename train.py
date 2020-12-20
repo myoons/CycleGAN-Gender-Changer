@@ -28,14 +28,14 @@ def main():
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--epoch', type=int, default=0, help='starting epoch')
-    parser.add_argument('--n_epochs', type=int, default=400, help='number of epochs of training')
-    parser.add_argument('--batchSize', type=int, default=10, help='size of the batches')
+    parser.add_argument('--n_epochs', type=int, default=800, help='number of epochs of training')
+    parser.add_argument('--batchSize', type=int, default=40, help='size of the batches')
     parser.add_argument('--dataroot', type=str, default='datasets/genderchange/', help='root directory of the dataset')
     parser.add_argument('--lr', type=float, default=0.0002, help='initial learning rate')
     parser.add_argument('--decay_epoch', type=int, default=100, help='epoch to start linearly decaying the learning rate to 0')
-    parser.add_argument('--size', type=int, default=256, help='size of the data crop (squared assumed)')
-    parser.add_argument('--input_nc', type=int, default=3, help='number of channels of input data')
-    parser.add_argument('--output_nc', type=int, default=3, help='number of channels of output data')
+    parser.add_argument('--size', type=int, default=128, help='size of the data crop (squared assumed)')
+    parser.add_argument('--input_nc', type=int, default=4, help='number of channels of input data')
+    parser.add_argument('--output_nc', type=int, default=4, help='number of channels of output data')
     parser.add_argument('--cuda', action='store_true', help='use GPU computation')
     parser.add_argument('--n_cpu', type=int, default=8, help='number of cpu threads to use during batch generation')
     opt = parser.parse_args()
@@ -88,11 +88,9 @@ def main():
     fake_B_buffer = ReplayBuffer()
 
     # Dataset loader
-    transforms_ = [ transforms.Resize(int(opt.size*1.12), Image.BICUBIC), 
+    transforms_ = [ transforms.Resize(int(opt.size*1.2), Image.BICUBIC), 
                     transforms.CenterCrop(opt.size), 
-                    transforms.RandomHorizontalFlip(),
-                    transforms.ToTensor(),
-                    transforms.Normalize((0.5,0.5,0.5), (0.5,0.5,0.5)) ]
+                    transforms.ToTensor()]
     dataloader = DataLoader(ImageDataset(opt.dataroot, transforms_=transforms_, unaligned=True), 
                             batch_size=opt.batchSize, shuffle=True, num_workers=opt.n_cpu, drop_last=True)
 
@@ -108,6 +106,7 @@ def main():
     ###### Training ######
     for epoch in range(opt.epoch, opt.n_epochs):
         for i, batch in enumerate(dataloader):
+            
             # Set model input
             real_A = Variable(input_A.copy_(batch['A']))
             real_B = Variable(input_B.copy_(batch['B']))
@@ -118,11 +117,11 @@ def main():
             # Identity loss
             # G_A2B(B) should equal B if real B is fed
             same_B = netG_A2B(real_B)
-            loss_identity_B = criterion_identity(same_B, real_B)*5.0 # [batchSize 3, 256, 256]
+            loss_identity_B = criterion_identity(same_B, real_B)*5.0 # [batchSize, 3, ImgSize, ImgSize]
 
             # G_B2A(A) should equal A if real A is fed
             same_A = netG_B2A(real_A)
-            loss_identity_A = criterion_identity(same_A, real_A)*5.0 # [batchSize 3, 256, 256]
+            loss_identity_A = criterion_identity(same_A, real_A)*5.0 # [batchSize, 3, ImgSize, ImgSize]
 
             # GAN loss
             fake_B = netG_A2B(real_A)
@@ -135,10 +134,10 @@ def main():
 
             # Cycle loss
             recovered_A = netG_B2A(fake_B)
-            loss_cycle_ABA = criterion_cycle(recovered_A, real_A)*10.0 # [batchSize 3, 256, 256]
+            loss_cycle_ABA = criterion_cycle(recovered_A, real_A)*10.0 # [batchSize, 3, ImgSize, ImgSize]
 
             recovered_B = netG_A2B(fake_A)
-            loss_cycle_BAB = criterion_cycle(recovered_B, real_B)*10.0 # [batchSize 3, 256, 256]
+            loss_cycle_BAB = criterion_cycle(recovered_B, real_B)*10.0 # [batchSize, 3, ImgSize, ImgSize]
 
             # Total loss
             loss_G = loss_identity_A + loss_identity_B + loss_GAN_A2B + loss_GAN_B2A + loss_cycle_ABA + loss_cycle_BAB
@@ -215,7 +214,7 @@ def main():
 
         # Save models checkpoints
 
-        if loss_G.item() < 2.4 :
+        if loss_G.item() < 2.3 :
             os.makedirs(os.path.join(experiment_dir, str(epoch)), exist_ok=True) 
             torch.save(netG_A2B.state_dict(), '{}/{}/netG_A2B.pth'.format(experiment_dir, epoch))
             torch.save(netG_B2A.state_dict(), '{}/{}/netG_B2A.pth'.format(experiment_dir, epoch))
