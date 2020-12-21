@@ -17,14 +17,14 @@ from datasets import ImageDataset
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--batchSize', type=int, default=1, help='size of the batches')
-parser.add_argument('--dataroot', type=str, default='datasets/genderchange/', help='root directory of the dataset')
-parser.add_argument('--input_nc', type=int, default=3, help='number of channels of input data')
-parser.add_argument('--output_nc', type=int, default=3, help='number of channels of output data')
-parser.add_argument('--size', type=int, default=256, help='size of the data (squared assumed)')
+parser.add_argument('--dataroot', type=str, default='datasets/background_remove/', help='root directory of the dataset')
+parser.add_argument('--input_nc', type=int, default=4, help='number of channels of input data')
+parser.add_argument('--output_nc', type=int, default=4, help='number of channels of output data')
+parser.add_argument('--size', type=int, default=128, help='size of the data (squared assumed)')
 parser.add_argument('--cuda', action='store_true', help='use GPU computation')
 parser.add_argument('--n_cpu', type=int, default=8, help='number of cpu threads to use during batch generation')
-parser.add_argument('--generator_A2B', type=str, default='/data/cycleGAN/logs/genderChanger@09.12.2020-03:34:27/weights/307/netG_A2B.pth', help='A2B generator checkpoint file')
-parser.add_argument('--generator_B2A', type=str, default='/data/cycleGAN/logs/genderChanger@09.12.2020-03:34:27/weights/307/netG_A2B.pth', help='B2A generator checkpoint file')
+parser.add_argument('--generator_A2B', type=str, default='/data/cycleGAN/logs/background_remove@20.12.2020-13:36:05/71/netG_A2B.pth', help='A2B generator checkpoint file')
+parser.add_argument('--generator_B2A', type=str, default='/data/cycleGAN/logs/background_remove@20.12.2020-13:36:05/71/netG_B2A.pth', help='B2A generator checkpoint file')
 opt = parser.parse_args()
 print(opt)
 
@@ -55,8 +55,7 @@ input_B = Tensor(opt.batchSize, opt.output_nc, opt.size, opt.size)
 
 # Dataset loader
 transforms_ = [transforms.Resize((opt.size, opt.size), Image.BICUBIC),
-                transforms.ToTensor(),
-                transforms.Normalize((0.5,0.5,0.5), (0.5,0.5,0.5))]
+                transforms.ToTensor()]
 dataloader = DataLoader(ImageDataset(opt.dataroot, transforms_=transforms_, mode='test'), 
                         batch_size=opt.batchSize, shuffle=False, num_workers=opt.n_cpu)
 ###################################
@@ -71,6 +70,7 @@ if not os.path.exists('output/B'):
 
 for i, batch in enumerate(dataloader):
     # Set model input
+    print(batch['A'].size(), batch['B'].size())
     real_A = Variable(input_A.copy_(batch['A']))
     real_B = Variable(input_B.copy_(batch['B']))
 
