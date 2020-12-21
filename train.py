@@ -29,13 +29,13 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--epoch', type=int, default=0, help='starting epoch')
     parser.add_argument('--n_epochs', type=int, default=800, help='number of epochs of training')
-    parser.add_argument('--batchSize', type=int, default=40, help='size of the batches')
-    parser.add_argument('--dataroot', type=str, default='datasets/genderchange/', help='root directory of the dataset')
+    parser.add_argument('--batchSize', type=int, default=10, help='size of the batches')
+    parser.add_argument('--dataroot', type=str, default='datasets/bgrmjpg/', help='root directory of the dataset')
     parser.add_argument('--lr', type=float, default=0.0002, help='initial learning rate')
     parser.add_argument('--decay_epoch', type=int, default=100, help='epoch to start linearly decaying the learning rate to 0')
-    parser.add_argument('--size', type=int, default=128, help='size of the data crop (squared assumed)')
-    parser.add_argument('--input_nc', type=int, default=4, help='number of channels of input data')
-    parser.add_argument('--output_nc', type=int, default=4, help='number of channels of output data')
+    parser.add_argument('--size', type=int, default=256, help='size of the data crop (squared assumed)')
+    parser.add_argument('--input_nc', type=int, default=3, help='number of channels of input data')
+    parser.add_argument('--output_nc', type=int, default=3, help='number of channels of output data')
     parser.add_argument('--cuda', action='store_true', help='use GPU computation')
     parser.add_argument('--n_cpu', type=int, default=8, help='number of cpu threads to use during batch generation')
     opt = parser.parse_args()
@@ -88,14 +88,15 @@ def main():
     fake_B_buffer = ReplayBuffer()
 
     # Dataset loader
-    transforms_ = [ transforms.Resize(int(opt.size*1.2), Image.BICUBIC), 
-                    transforms.CenterCrop(opt.size), 
-                    transforms.ToTensor()]
+    transforms_ = [ transforms.Resize(int(opt.size*1.15), Image.BICUBIC), 
+                    transforms.CenterCrop(opt.size),
+                    transforms.ToTensor(),
+                    transforms.Normalize((0.5,0.5,0.5), (0.5,0.5,0.5))]
     dataloader = DataLoader(ImageDataset(opt.dataroot, transforms_=transforms_, unaligned=True), 
                             batch_size=opt.batchSize, shuffle=True, num_workers=opt.n_cpu, drop_last=True)
 
     # Plot Loss and Images in Tensorboard
-    experiment_dir = 'logs/{}@{}'.format('genderChanger', datetime.now().strftime("%d.%m.%Y-%H:%M:%S"))
+    experiment_dir = 'logs/{}@{}'.format(opt.dataroot.split('/')[1], datetime.now().strftime("%d.%m.%Y-%H:%M:%S"))
     os.makedirs(experiment_dir, exist_ok=True)
     writer = SummaryWriter(os.path.join(experiment_dir, "tb"))
 
@@ -106,7 +107,7 @@ def main():
     ###### Training ######
     for epoch in range(opt.epoch, opt.n_epochs):
         for i, batch in enumerate(dataloader):
-            
+
             # Set model input
             real_A = Variable(input_A.copy_(batch['A']))
             real_B = Variable(input_B.copy_(batch['B']))
@@ -214,7 +215,7 @@ def main():
 
         # Save models checkpoints
 
-        if loss_G.item() < 2.3 :
+        if loss_G.item() < 1.7 :
             os.makedirs(os.path.join(experiment_dir, str(epoch)), exist_ok=True) 
             torch.save(netG_A2B.state_dict(), '{}/{}/netG_A2B.pth'.format(experiment_dir, epoch))
             torch.save(netG_B2A.state_dict(), '{}/{}/netG_B2A.pth'.format(experiment_dir, epoch))

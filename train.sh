@@ -1,1 +1,1 @@
-python train.py --dataroot datasets/background_remove --cuda
+python train.py --dataroot datasets/bgrmjpg --cuda
