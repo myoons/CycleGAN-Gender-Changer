@@ -88,10 +88,11 @@ def main():
     fake_B_buffer = ReplayBuffer()
 
     # Dataset loader
-    transforms_ = [ transforms.Resize(int(opt.size*1.15), Image.BICUBIC), 
+    transforms_ = [ transforms.Resize(int(opt.size*1.2), Image.BICUBIC), 
                     transforms.CenterCrop(opt.size),
                     transforms.ToTensor(),
                     transforms.Normalize((0.5,0.5,0.5), (0.5,0.5,0.5))]
+                    
     dataloader = DataLoader(ImageDataset(opt.dataroot, transforms_=transforms_, unaligned=True), 
                             batch_size=opt.batchSize, shuffle=True, num_workers=opt.n_cpu, drop_last=True)
 
@@ -215,7 +216,7 @@ def main():
 
         # Save models checkpoints
 
-        if loss_G.item() < 2 :
+        if loss_G.item() < 2.5 :
             os.makedirs(os.path.join(experiment_dir, str(epoch)), exist_ok=True) 
             torch.save(netG_A2B.state_dict(), '{}/{}/netG_A2B.pth'.format(experiment_dir, epoch))
             torch.save(netG_B2A.state_dict(), '{}/{}/netG_B2A.pth'.format(experiment_dir, epoch))
