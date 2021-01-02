@@ -2,9 +2,7 @@
 datasets
 logs
 nohup
-
 debug.log
-
 test_images
 
-data
+__pycache__

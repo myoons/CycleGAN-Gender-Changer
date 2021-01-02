@@ -103,6 +103,17 @@ _If you don't own a GPU remove the --cuda option, although I advise you to get o
 <br/>
 <br/>
 
+##  📟  _**Tensorboard**_
+
+<br/>
+
+    tensorboard --logdir ./logs
+
+_You can watch your experiments' progress by runing tensorboard_
+
+<br/>
+<br/>
+
 ## 📁 _**Major Flags**_
 
 </br>
