@@ -1,1 +1,1 @@
-python train.py --dataroot datasets/bgrmjpg --cuda
+python train.py --dataroot datasets/genrchange --cuda
