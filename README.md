@@ -12,7 +12,7 @@
    <a href="https://github.com/myoons/CycleGAN-Gender-Changer/graphs/commit-activity" target="_blank">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-Yes-darkblue.svg" />
   </a>
-  <a href="#" target="_blank">
+  <a href="https://github.com/myoons/" target="_blank">
     <img alt="License: Myoons" src="https://img.shields.io/badge/License-Myoons-purple.svg" />
   </a>
 </p>
