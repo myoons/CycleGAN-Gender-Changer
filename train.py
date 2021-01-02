@@ -12,8 +12,8 @@ from torch.autograd import Variable
 from PIL import Image
 import torch
 
-from models.models import Generator
-from models.models import Discriminator
+from models.generator import Generator
+from models.discriminator import Discriminator
 from utils.utils import ReplayBuffer
 from utils.utils import LambdaLR
 from utils.utils import weights_init_normal

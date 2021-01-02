@@ -12,7 +12,7 @@ from torch.utils.data import DataLoader
 from torch.autograd import Variable
 import torch
 
-from models.models import Generator
+from models.generator import Generator
 from datasets import ImageDataset
 
 parser = argparse.ArgumentParser()
