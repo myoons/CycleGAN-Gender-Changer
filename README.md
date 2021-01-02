@@ -42,9 +42,10 @@ _CycleGAN requires quite large memory of GPU. So local GPU was not able to train
 ## 📁 _**Dataset : Korean Celebrities**_
 _Since the purpose of the project was to give pleasure to my friends, I needed a model that was appropriate to Koreans. So I collected Korean Celebrities Images as Dataset. I crawled images with [Selenium](https://www.selenium.dev/) and used [Face Recognition](https://github.com/ageitgey/face_recognition) to crop the face in the images._
 
-_**Man : **_
+_**Man : 3667 Images**_
+
+_**Woman : 4272 Images**_
 <br/>
-_**Woman : **_
 
 _[Dataset Link](https://drive.google.com/drive/folders/1mCUy34p05QY6qLG33nyN0IMBMKsFRZHP?usp=sharing)_
 
