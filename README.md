@@ -135,9 +135,6 @@ _2. Type : Int_
 
 
 ## 🔗 _**References**_
-
-<br/>
-
 _1. [Paper](https://arxiv.org/pdf/1703.10593.pdf)_ <br/>
 _2. [Base Code](https://github.com/aitorzip/PyTorch-CycleGAN)_ <br/>
 _3. [Face Recognition](https://github.com/ageitgey/face_recognition)_ <br/>
