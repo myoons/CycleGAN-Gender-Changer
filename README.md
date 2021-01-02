@@ -39,7 +39,7 @@ _CycleGAN requires quite large memory of GPU. So local GPU was not able to train
 </br>
 </br>
 
-## 📁 _**Dataset : Korean Celebrities**_
+## 📝 _**Dataset : Korean Celebrities**_
 _Since the purpose of the project was to give pleasure to my friends, I needed a model that was appropriate to Koreans. So I collected Korean Celebrities Images as Dataset. I crawled images with [Selenium](https://www.selenium.dev/) and used [Face Recognition](https://github.com/ageitgey/face_recognition) to crop the face in the images._
 
 _**Man : 3667 Images**_
@@ -89,7 +89,7 @@ _If you don't own a GPU remove the --cuda option, although I advise you to get o
 <br/>
 <br/>
 
-##  📟  _**Tensorboard**_
+## 📟 _**Tensorboard**_
     tensorboard --logdir ./logs
 
 _You can watch your experiments' progress by runing tensorboard_
@@ -97,42 +97,49 @@ _You can watch your experiments' progress by runing tensorboard_
 <br/>
 <br/>
 
-## 📁 _**Major Flags**_
+## 🚩 _**Major Flags**_
 ### _1. --n_epochs : Number of epochs in training_
-_1. Default : 400_
-<br/>
-_2. Type : Int_
-
-<br/>
+_＊ Default : 400_ <br/>
+_＊ Type : Int_ <br/>
 
 ### _2. --batchSize : Size of Batch_
-_1. Default : 10_
-<br/>
-_2. Type : Int_
-
-<br/>
+_＊ Default : 10_ <br/>
+_＊ Type : Int_ <br/>
 
 ### _3. --size : Size of Image Crop (Squre Assumed)_
-_1. Default : 256_
-<br/>
-_2. Type : Int_
-
-<br/>
+_＊ Default : 256_ <br/>
+_＊ Type : Int_ <br/>
 
 ### _4. --dataroot : Root Directory of Dataset_
-_1. Default : Input as Arugment_
-<br/>
-_2. Type : Str_
-
-<br/>
+_＊ Default : Input as Arugment_ <br/>
+_＊ Type : Str_ <br/>
 
 ### _5. --input_nc / --output_nc : Number of channels of input / output data_
-_1. Default : 3_
+_＊ Default : 3_
 <br/>
-_2. Type : Int_
+_＊ Type : Int_
 
 <br/>
+<br/>
 
+## 📁 _**Directories**_
+### _1. data_utils : Crawl & Pre-process dataset_
+_＊ Foreign_Crawling : Crawling foreign person images_ <br/>
+_＊ Format_Change : PNG2JPG & File Renaming_ <br/>
+_＊ Korean_Crawling : Crawling Korean Celebrities images_ <br/>
+_＊ chromedriver : Selenium Chrome Driver_ <br/>
+_＊ face_detector : Croping face from images_ <br/>
+
+### _2. models : Discriminator & Generator_
+_＊ discriminator : Discriminator model_ <br/>
+_＊ generator : Generator Model_ <br/>
+
+### _3. utils : Utils for training_
+_＊ utils : training utils_ <br/>
+
+
+<br/>
+<br/>
 
 
 ## 🔗 _**References**_
