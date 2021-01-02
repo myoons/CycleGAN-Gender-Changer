@@ -6,3 +6,6 @@ debug.log
 test_images
 
 __pycache__
+*.pyc
+
+nohup.out
