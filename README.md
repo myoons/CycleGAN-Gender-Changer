@@ -21,9 +21,6 @@
 <br/>
 
 ## 👤 _**Author : Myoons**_
-
-<br/>
-
 * **[Github](https://github.com/myoons)**
 * **[Website](https://ainote.tistory.com/)**
 
@@ -31,27 +28,18 @@
 </br>
 
 ## 🌈 _**Motivation : To give pleasure to friends**_
-
-<br/>
-
 _FUN is the best! It's always thrilling._
 
 </br>
 </br>
 
 ## 💻 _**GPU : TITAN RTX**_
-
-<br/>
-
 _CycleGAN requires quite large memory of GPU. So local GPU was not able to train the current model. I borrwowed a server from school and used [TITAN RTX](https://www.nvidia.com/ko-kr/deep-learning-ai/products/titan-rtx/). Thanks KAIST!_ 😊 
 
 </br>
 </br>
 
 ## 📁 _**Dataset : Korean Celebrities**_
-
-</br>
-
 _Since the purpose of the project was to give pleasure to my friends, I needed a model that was appropriate to Koreans. So I collected Korean Celebrities Images as Dataset. I crawled images with [Selenium](https://www.selenium.dev/) and used [Face Recognition](https://github.com/ageitgey/face_recognition) to crop the face in the images._
 
 _**Man : **_
@@ -64,9 +52,6 @@ _[Dataset Link](https://drive.google.com/drive/folders/1mCUy34p05QY6qLG33nyN0IMB
 </br>
 
 ## 🔧 _**Training**_
-
-<br/>
-
 ### _**1. Install Repository**_
 
 _You can install this repository using `git clone`_
@@ -104,9 +89,6 @@ _If you don't own a GPU remove the --cuda option, although I advise you to get o
 <br/>
 
 ##  📟  _**Tensorboard**_
-
-<br/>
-
     tensorboard --logdir ./logs
 
 _You can watch your experiments' progress by runing tensorboard_
@@ -115,9 +97,6 @@ _You can watch your experiments' progress by runing tensorboard_
 <br/>
 
 ## 📁 _**Major Flags**_
-
-</br>
-
 ### _1. --n_epochs : Number of epochs in training_
 _1. Default : 400_
 <br/>
