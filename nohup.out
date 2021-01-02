@@ -1,1 +1,0 @@
-Namespace(batchSize=10, cuda=True, dataroot='datasets/bgrmjpg', decay_epoch=100, epoch=0, input_nc=3, lr=0.0002, n_cpu=8, n_epochs=800, output_nc=3, size=256)

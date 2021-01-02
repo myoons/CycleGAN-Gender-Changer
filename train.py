@@ -215,7 +215,7 @@ def main():
 
         # Save models checkpoints
 
-        if loss_G.item() < 1.7 :
+        if loss_G.item() < 2 :
             os.makedirs(os.path.join(experiment_dir, str(epoch)), exist_ok=True) 
             torch.save(netG_A2B.state_dict(), '{}/{}/netG_A2B.pth'.format(experiment_dir, epoch))
             torch.save(netG_B2A.state_dict(), '{}/{}/netG_B2A.pth'.format(experiment_dir, epoch))
