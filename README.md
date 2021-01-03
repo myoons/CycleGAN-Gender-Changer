@@ -33,12 +33,6 @@ _FUN is the best! It's always thrilling._
 </br>
 </br>
 
-## 💻 _**GPU : TITAN RTX**_
-_CycleGAN requires quite large memory of GPU. So local GPU was not able to train the current model. I borrwowed a server from school and used [TITAN RTX](https://www.nvidia.com/ko-kr/deep-learning-ai/products/titan-rtx/). Thanks KAIST!_ 😊 
-
-</br>
-</br>
-
 ## 📝 _**Dataset : Korean Celebrities**_
 _Since the purpose of the project was to give pleasure to my friends, I needed a model that was appropriate to Koreans. So I collected Korean Celebrities Images as Dataset. I crawled images with [Selenium](https://www.selenium.dev/) and used [Face Recognition](https://github.com/ageitgey/face_recognition) to crop the face in the images._
 
