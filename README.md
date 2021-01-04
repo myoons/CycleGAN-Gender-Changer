@@ -136,7 +136,7 @@ _＊ utils : training utils_ <br/>
 <br/>
 
 
-## 📁 _**Learning Graph (Tensorboard)**_
+## 📈  _**Learning Graph (Tensorboard)**_
 ### _1. Loss_D_
 ![LossD](https://user-images.githubusercontent.com/67945103/103547694-195f7e80-4ee8-11eb-8210-1ef1a22c01d9.PNG)
 
@@ -171,7 +171,7 @@ _＊ utils : training utils_ <br/>
 <br/>
 <br/>
 
-## 📁 _**Results**_
+## 🔥 _**Results**_
 ### _1. Man2Woman_
 
 ![Man2Woman](https://user-images.githubusercontent.com/67945103/103546687-bde0c100-4ee6-11eb-93b5-21f681a2025b.png)
