@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 import argparse
 import sys
 import os
@@ -17,14 +16,14 @@ from datasets import ImageDataset
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--batchSize', type=int, default=1, help='size of the batches')
-parser.add_argument('--dataroot', type=str, default='datasets/bgrmjpg/', help='root directory of the dataset')
+parser.add_argument('--dataroot', type=str, default='datasets/genderchange/', help='root directory of the dataset')
 parser.add_argument('--input_nc', type=int, default=3, help='number of channels of input data')
 parser.add_argument('--output_nc', type=int, default=3, help='number of channels of output data')
 parser.add_argument('--size', type=int, default=256, help='size of the data (squared assumed)')
 parser.add_argument('--cuda', action='store_true', help='use GPU computation')
 parser.add_argument('--n_cpu', type=int, default=8, help='number of cpu threads to use during batch generation')
-parser.add_argument('--generator_A2B', type=str, default='/data/cycleGAN/logs/bgrmjpg@21.12.2020-09:34:06/172/netG_A2B.pth', help='A2B generator checkpoint file')
-parser.add_argument('--generator_B2A', type=str, default='/data/cycleGAN/logs/bgrmjpg@21.12.2020-09:34:06/172/netG_B2A.pth', help='B2A generator checkpoint file')
+parser.add_argument('--generator_A2B', type=str, default='/data/cycleGAN/logs/genderchange@02.01.2021-06:01:03/86/netG_A2B.pth', help='A2B generator checkpoint file')
+parser.add_argument('--generator_B2A', type=str, default='/data/cycleGAN/logs/genderchange@02.01.2021-06:01:03/86/netG_B2A.pth', help='B2A generator checkpoint file')
 opt = parser.parse_args()
 print(opt)
 
@@ -71,7 +70,6 @@ if not os.path.exists('output/B'):
 
 for i, batch in enumerate(dataloader):
     # Set model input
-    print(batch['A'].size(), batch['B'].size())
     real_A = Variable(input_A.copy_(batch['A']))
     real_B = Variable(input_B.copy_(batch['B']))
 
