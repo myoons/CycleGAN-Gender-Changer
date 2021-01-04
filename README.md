@@ -13,7 +13,7 @@
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-Yes-darkblue.svg" />
   </a>
   <a href="https://github.com/myoons/" target="_blank">
-    <img alt="License: Myoons" src="https://img.shields.io/badge/License-Myoons-purple.svg" />
+    <img alt="Motivation: Fun" src="https://img.shields.io/badge/Motivation-Fun-purple.svg" />
   </a>
 </p>
 
@@ -135,6 +135,55 @@ _＊ utils : training utils_ <br/>
 <br/>
 <br/>
 
+
+## 📁 _**Learning Graph (Tensorboard)**_
+### _1. Loss_D_
+![LossD](https://user-images.githubusercontent.com/67945103/103547694-195f7e80-4ee8-11eb-8210-1ef1a22c01d9.PNG)
+
+<br/>
+
+### _2. Loss_G_
+![LossG](https://user-images.githubusercontent.com/67945103/103547700-1b294200-4ee8-11eb-9ccd-69cc1cb11597.PNG)
+
+
+<br/>
+
+### _3. Loss_G_GAN_
+
+![LossGGan](https://user-images.githubusercontent.com/67945103/103547705-1c5a6f00-4ee8-11eb-8f51-1ddc52ff6a89.PNG)
+
+
+<br/>
+
+### _4. Loss_G_Identity_
+
+![LossGIdentitiy](https://user-images.githubusercontent.com/67945103/103547703-1bc1d880-4ee8-11eb-8d08-aa47ba98e522.PNG)
+
+
+<br/>
+
+### _5. Loss_G_Cycle_
+
+![LossGCycle](https://user-images.githubusercontent.com/67945103/103547704-1bc1d880-4ee8-11eb-8ffd-73cdcd6d5cc9.PNG)
+
+
+
+<br/>
+<br/>
+
+## 📁 _**Results**_
+### _1. Man2Woman_
+
+![Man2Woman](https://user-images.githubusercontent.com/67945103/103546687-bde0c100-4ee6-11eb-93b5-21f681a2025b.png)
+
+<br/>
+
+### _2. Woman2Man_
+
+![Woman2Man](https://user-images.githubusercontent.com/67945103/103547595-f6cd6580-4ee7-11eb-97f6-1c40e8ce1821.png)
+
+<br/>
+<br/>
 
 ## 🔗 _**References**_
 _1. [Paper](https://arxiv.org/pdf/1703.10593.pdf)_ <br/>
